@@ -12,11 +12,13 @@
 
 (defvar yxl-ess-useful-atpoint-funcs
   '(("print()" . "print")
-    ("str()" . "str")
     ("dplyr::glimpse()" . "dplyr::glimpse")
+    ("str()" . "str")
     ("summary()" . "summary")
     ("dim()" . "dim")
     ("dimnames()" . "dimnames")
+    ("head()" . "head")
+    ("tail()" . "tail")
     ("Hmisc::describe()" . "Hmisc::describe"))
   "list of useful R functions to execute to the current object atpoint.")
 
