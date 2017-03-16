@@ -43,28 +43,37 @@
             :action (lambda (x) (ess-execute (cdr x)))
             :caller 'yxl-ess-call-useful-funcs))
 
-(defun yxl-ess-call-atpoint-useful-funcs ()
+(defun yxl-ess-atpoint ()
   (interactive)
   (ivy-read "Call useful funcs:"
             yxl-ess-useful-atpoint-funcs
             :action (lambda (x) (yxl-ess-call-atpoint-func (cdr x)))
-            :caller 'yxl-ess-call-atpoint-useful-funcs))
+            :caller 'yxl-ess-atpoint))
+
+(defun yxl-ess-atpoint-pop ()
+  (interactive)
+  (ivy-read "Call useful funcs:"
+            yxl-ess-useful-atpoint-funcs
+            :action (lambda (x)
+                      (let ((ess-execute-in-process-buffer nil))
+                        (yxl-ess-call-atpoint-func (cdr x))))
+            :caller 'yxl-ess-atpoint-pop))
 
 (defun yxl-ess-rdired-str ()
   (interactive)
   (let ((objname (ess-rdired-object)))
     (ess-execute (concat "str(" objname ")\n"))))
 
-(defun yxl-ess-rdired-call-atpoint-useful-funcs ()
+(defun yxl-ess-rdired-atpoint ()
   (interactive)
   (ivy-read "Call useful funcs:"
             yxl-ess-useful-atpoint-funcs
             :action (lambda (x)
                       (let ((objname (ess-rdired-object)))
                         (ess-execute (concat (cdr x) "(" objname ")\n"))))
-            :caller 'yxl-ess-rdired-call-atpoint-useful-funcs))
+            :caller 'yxl-ess-rdired-atpoint))
 
-(defun yxl-ess-rdired-call-atpoint-useful-funcs-pop ()
+(defun yxl-ess-rdired-atpoint-pop ()
   (interactive)
   (ivy-read "Call useful funcs:"
             yxl-ess-useful-atpoint-funcs
@@ -72,7 +81,7 @@
                       (let ((objname (ess-rdired-object))
                             (ess-execute-in-process-buffer nil))
                         (ess-execute (concat (cdr x) "(" objname ")\n"))))
-            :caller 'yxl-ess-rdired-call-atpoint-useful-funcs))
+            :caller 'yxl-ess-rdired-atpoint-pop))
 
 (defun yxl-ess-open-rstudio ()
   (interactive)
