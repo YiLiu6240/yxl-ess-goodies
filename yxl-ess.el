@@ -20,7 +20,9 @@
     ("dimnames()" . "dimnames")
     ("head()" . "head")
     ("tail()" . "tail")
-    ("Hmisc::describe()" . "Hmisc::describe"))
+    ("Hmisc::describe()" . "Hmisc::describe")
+    ("DT::datatable() -- view dataframe in browser" . "DT::datatable")
+    ("listviewer::jasonedit() -- view list in browser" . "listviewer::jasonedit"))
   "list of useful R functions to execute to the current object atpoint.")
 
 (defun yxl-ess-call-atpoint-func (r-func)
