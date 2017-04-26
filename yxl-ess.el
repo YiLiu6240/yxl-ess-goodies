@@ -1,6 +1,5 @@
 (require 'ess-site)
 (require 'ivy)
-(require 'hydra)
 
 ;; TODO:
 ;; add optional arguments
@@ -100,26 +99,5 @@
       (shell-command (format "open -a Rstudio %s & disown" path)))
      ((string-equal system-type "gnu/linux")
       (shell-command (format "rstudio %s & disown" path))))))
-
-(defhydra yxl-ess-rdired-hydra (:color blue :hint nil :columns 4
-                                       :pre (setq which-key-inhibit t)
-                                       :post (setq which-key-inhibit nil))
-  ("s" yxl-ess-rdired-str "str")
-  ("S" ess-rdired-sort "sort")
-  ;; view in REPL
-  ("vv" ess-rdired-view "view")
-  ;; view in its own buffer
-  ("vp" ess-R-dv-pprint "dv:pprint")
-  ("vd" ess-view-inspect-df "ess-view:inspect-df")
-  ("vt" ess-R-dv-ctable "dv:ctable")
-  ("g" revert-buffer "revert")
-  ("a" yxl-ess-rdired-atpoint "useful-funcs")
-  ("A" yxl-ess-rdired-atpoint-pop "useful-funcs:pop")
-  ("p" ess-rdired-plot "plot")
-  ("y" ess-rdired-type "mode(.)")
-  ("d" ess-rdired-delete "delete")
-  ("u" ess-rdired-undelete "undelete")
-  ("x" ess-rdired-expunge "expunge"))
-
 
 (provide 'yxl-ess)
